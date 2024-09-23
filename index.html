@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conversor de Km/h a m/s y cálculo de porcentajes">
+    <title>Conversor y Calculadora de Porcentajes</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: calc(100% - 22px);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch(error => {
+                console.log('Error al registrar el Service Worker:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor y Calculadora</h1>
+        
+        <!-- Conversor de km/h a m/s -->
+        <h2>Km/h a m/s</h2>
+        <input type="number" id="kmhInput" placeholder="Ingresa km/h" />
+        <button onclick="convertToMetersPerSecond()">Convertir a m/s</button>
+        <p class="result" id="mpsResult">Resultado: -- m/s</p>
+        
+        <!-- Calculadora de porcentajes -->
+        <h2>Calcular Porcentaje</h2>
+        <input type="number" id="percentageInput" placeholder="Ingresa el valor" />
+        <input type="number" id="totalInput" placeholder="Ingresa el total" />
+        <button onclick="calculatePercentage()">Calcular Porcentaje</button>
+        <p class="result" id="percentageResult">Resultado: -- %</p>
+    </div>
+
+    <script>
+        // Función para convertir km/h a m/s
+        function convertToMetersPerSecond() {
+            const kmh = document.getElementById('kmhInput').value;
+            if (kmh !== "") {
+                const mps = (kmh * 1000) / 3600;
+                document.getElementById('mpsResult').innerText = `Resultado: ${mps.toFixed(2)} m/s`;
+            } else {
+                document.getElementById('mpsResult').innerText = "Por favor, ingresa un valor válido.";
+            }
+        }
+
+        // Función para calcular porcentaje
+        function calculatePercentage() {
+            const value = document.getElementById('percentageInput').value;
+            const total = document.getElementById('totalInput').value;
+            if (value !== "" && total !== "" && total != 0) {
+                const percentage = (value / total) * 100;
+                document.getElementById('percentageResult').innerText = `Resultado: ${percentage.toFixed(2)}%`;
+            } else {
+                document.getElementById('percentageResult').innerText = "Por favor, ingresa valores válidos.";
+            }
+        }
+    </script>
+</body>
+</html>
