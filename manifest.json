@@ -1,0 +1,21 @@
+{
+    "name": "Conversor y Calculadora de Porcentajes",
+    "short_name": "Conversor",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f4f4f9",
+    "theme_color": "#007bff",
+    "description": "Convierte km/h a m/s y calcula porcentajes rápidamente.",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
